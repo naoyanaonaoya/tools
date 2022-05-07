@@ -15,5 +15,8 @@ def on_scroll(x, y ,dx, dy):
   (x, y)))
  
 while True:
- with mouse.Listener( no_move = on_move,on_click = on_click,on_scroll = on_scroll) as listener:
+ with mouse.Listener(
+     no_move = on_move,
+     on_click = on_click,
+     on_scroll = on_scroll) as listener:
   listener.join()
