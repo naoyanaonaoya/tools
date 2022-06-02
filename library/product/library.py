@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[3]:
+# In[1]:
 
 
 from selenium import webdriver # chromeを操作するため
@@ -21,12 +21,13 @@ sys.stdout = io.TextIOWrapper(sys.stdout, encoding='utf-8')
 from password.id_password import *
 
 
-# In[4]:
+# In[2]:
 
 
 option = Options()                          # オプションを用意
 option.add_argument('--headless')           # ヘッドレスモードの設定を付与
-browser = webdriver.Chrome(options=option)
+chromedriverPath = "/Users/imainaoya/Downloads/chromedriver"
+browser = webdriver.Chrome(chromedriverPath ,options=option)
 # browser = webdriver.Chrome()
 
 url = "https://www.meguro-library.jp/opw/OPS/OPSUSER.CSP"
@@ -57,7 +58,7 @@ lendeig_page_btn.click()
 
 subject = "目黒区立図書館の図書の返却期限が迫っています。"
 body = ""
-# <br>は開業
+# <br>は改行
 
 books = browser.find_elements(By.CLASS_NAME, 'item')
 for i in range(len(books)):
@@ -84,20 +85,18 @@ for i in range(len(books)):
     # print('貸出日' in s)
     # print('返却期限日' in s)
 
-body += '<a href="https://www.meguro-library.jp/">図書館のサイト</a>'
-
 sleep(10)
 
 browser.quit()
 
 
-# In[6]:
+# In[3]:
 
 
 body
 
 
-# In[7]:
+# In[4]:
 
 
 import sys, io
@@ -122,14 +121,15 @@ msg["From"] = gmail_account
 # msg
 
 
-# In[8]:
+# In[5]:
 
 
 server = smtplib.SMTP_SSL("smtp.gmail.com", 465, context=ssl.create_default_context())
 server.login(gmail_account, gmail_password)
 server.send_message(msg)
 server.close()
-print("complete")
+'送信完了'
+
 
 # In[ ]:
 
