@@ -4,4 +4,3 @@
 - herokuにアップしたい
 ## dmmbooks
 - dmmbooksを色々するツール
-## test
